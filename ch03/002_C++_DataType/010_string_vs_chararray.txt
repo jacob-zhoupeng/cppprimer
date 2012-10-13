@@ -1,0 +1,20 @@
+C style string:
+1. C string function: #include <cstring>
+  // String length
+  int strlen(const char* str);
+	                  
+  // String comparation
+  int strcmp(const char* str1, const char* str2);
+
+  // String copy
+  char* strcpy(char* dest, const char* src);
+
+2. CC string type: #include <string>
+  2.1 Minimux member function set:
+    2.1.1 Support char array or another string object to initialize a string.
+	2.1.2 Support string copy.
+	2.1.3 Support single character operation.
+	2.1.4 Support string comparation.
+	2.1.5 Support concatenation.
+	2.1.6 Support getting string length.
+	2.1.7 Support string empty judgement.

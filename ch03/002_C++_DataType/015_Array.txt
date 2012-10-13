@@ -1,0 +1,3 @@
+//! NOTE: ca1 != ca2
+const char ca1[] = { 'C', '+', '+' };
+const char ca2[] = { "C++" };

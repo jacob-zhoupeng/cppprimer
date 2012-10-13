@@ -1,0 +1,38 @@
+int ival = 1024;
+
+// OK: refVal is a reference to ival
+int& refVal = ival; //! Reference MUST be initialized
+int& refVal2; //! Error: reference MUST be initialized
+
+int ival = 1024;
+
+// Error: refVal is int type, NOT int*
+int& refVal = &ival;
+int* pi = &ival;
+
+// OK: refPtr is a pointer reference
+int*& ptrVal2 = pi;
+
+// ===================================================
+// Define two int type object
+int ival = 1024, ival2 = 2048;
+
+// Define a reference and a int object
+int& rval = ival, rval2 = ival2;
+
+// Define a int object, a pointer and a reference
+int ival3 = 1024, *pi = &ival3, &ri = ival3;
+
+// Define two reference
+int& rval3 = ival3, &rval4 = ival2;
+
+// ====================================================
+double dval = 3.14159;
+
+// Only legal for **const reference**
+const int& ir = 1024;
+const int& ir2 = dval;
+const double& dr = dval + 1.0;
+
+Difference between pointer and reference:
+  Reference MUST always points an object.

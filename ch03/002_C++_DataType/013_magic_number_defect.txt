@@ -1,0 +1,24 @@
+for (int index = 0; index < 512; ++index)
+
+Readability: what does 512 mean?
+Maintainability: assume your program has 1000 lines, 512 appears 4% of your code,
+                 that is 400 lines has 512. and then you have to modify 80% of 512s.
+				 how can you do that better?
+
+const: read-only
+1. Can you assign const object address to a non-const ptr?
+  const double minWage = 9.60;
+  double* ptr = &minWage; //! Compile error!
+  const double* cptr = &minWage; // OK!
+
+// Const example:
+int strcmp(const char* str1, const char* str2);
+int strcpy(char* dest, const char* src);
+
+// Const ptr
+int errNumb = 0;
+int* const curErr = &errNumb;
+
+// Another use of const
+const double pi = 3.14159;
+const double* const pi_ptr = &pi;
