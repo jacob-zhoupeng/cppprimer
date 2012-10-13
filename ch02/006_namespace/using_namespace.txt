@@ -1,0 +1,94 @@
+namespace Cplusplus_Primer_3E {
+
+template<class elemType>
+class Array {
+	// ...
+};
+
+class Matrix {
+	// ...
+};
+
+}
+
+// Using namespace styntax
+namespace_identifier::entity_name;
+
+Cplusplus_Primer_3E::Array<string> text;
+IBM_Canada_Laboratory::Matrix mat;
+Disney_Feature_Animation::Point;
+
+
+// namespace alias
+namespace LIB = IBM_Canada_Laboratory;
+namespace DFA = Disney_Feature_Animation;
+
+// Using namespace alias
+#include "IBM_Canada.h"
+
+namespace LIB = IBM_Canada_Labratory;
+int main(void) {
+	LIB::Array<int> ia(1024);
+	return 0;
+}
+
+// -----------------------------------------
+namespace LIB = Cplusplus_Primer_3E;
+int main(void) {
+	// Declaration do NOT need to be changed
+	LIB::Array<int> ia(1024);
+	// ...
+}
+
+// ----------- using directive --------------
+#include "IBM_Canada_Laboratory.h"
+
+using namespace IBM_Canada_Laboratory;
+
+int main(void) {
+	// OK: IBM_Canada_Laboratory::Matrix
+	Matrix mat(4, 4);
+
+	// OK: IBM_Canada_Laoboratory::Array
+	Array<int> ia(1024);
+
+	return 0;
+}
+
+// ----------- Limited using ------------------
+#include "IBM_Canada_Laboratory.h"
+
+// Only Matrix can be seen by compiler
+using IBM_Canada_Laboratory::Matrix;
+int main(void) {
+	// OK: IBM_Canada_Laboratory::Matrix
+	Matrix mat(4, 4);
+
+	// Error: IBM_Canada_Laboratory::Array NOT visible
+	Array<int> ia(1024);
+
+	return 0;
+}
+
+// ---- Good habitate to use using directive ----
+#include <string>
+
+using namespace std;
+
+// OK: but not recommented
+string current_chapter = "A tour of C++";
+
+// ..................................................
+#include <string>
+
+using namespace std::string;
+
+// OK: only string can be seen by compiler, you SHOULD
+// do like this.
+string current_chapter = "A tour of C++";
+
+// ..................................................
+#include <string>
+
+// OK: but a litter more typing
+std::string current_chapter = "A tour of C++";
