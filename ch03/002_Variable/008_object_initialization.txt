@@ -1,0 +1,12 @@
+#include <cmath>
+#include <string>
+
+double price = 10.99, discount = 0.16;
+double sale_price(price * discount);
+
+string pet("wrinkles");
+
+extern int get_value();
+
+int val = get_value();
+ussigned abs_val = abs(val);

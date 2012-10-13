@@ -1,0 +1,10 @@
+Common:
+1. have a memory to hold value.
+
+Difference:
+1. variable is addressable.
+2. variable has two associative value: left value & right value
+	2.1 right value: stored in memory(rvalue or are-value: read value, both constant 
+	                 and variable can be used as right value).
+	2.1 left value: its memory address(lvalue or ell-value: location value, literal 
+	                constant can NOT be used as left value).

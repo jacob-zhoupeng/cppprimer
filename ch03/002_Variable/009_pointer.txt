@@ -1,0 +1,5 @@
+Pointers comparison:
+1. Data pointer: There no difference in different pointers EXCEPT the object 
+                 pointed by the pointer. [pointer type instruct compiler how 
+				 to interpret contant in a specific address].
+2. Function pointer:  <to be added sometime> Zhou Peng <peng.zhoupeng@gmail.com>

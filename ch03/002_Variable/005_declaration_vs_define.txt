@@ -1,0 +1,6 @@
+Difference:
+1. Compiler will NOT allocate memory for var declaration.
+
+example:
+declaration: extern string file_name;
+define: string file_name;

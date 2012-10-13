@@ -1,0 +1,47 @@
+literal constant:
+
+1. attribute:
+nonaddressable, const
+
+2. written form: 20(d)
+decimal£º20
+octal: 024
+hexadeciaml: 0x14
+
+3. sign:
+3.1: default: signed
+3.2: 128u 1024UL 1L 8Lu
+     3.14159F 0.1f 12.345L 0.0
+	 3e1 1.0E-3 2. 1.0L
+
+4. bool:
+true false
+
+5. character:
+5.1: printable character:
+	'a' '2' ',' ' '(white space)
+5.2: non-printable character:
+	newline            \n
+	horizontal tab     \t
+	vertical tab       \t
+	backspace          \b
+	carriage return    \r
+	formfeed           \f
+	alert(beel)        \a
+	backslash          \\
+	question mark      \?
+	single quote       \'
+	double quote       \"
+5.3: wchar_t:
+	L'a'
+5.4: string:
+	""(null string)
+	"a"
+	"\nCC\toptions\tfile.[cC]\n"
+	"a multi-line \
+	string literal signals its \
+	continuation with a backslash"
+	L"a wide string leteral"
+5.5: string concatenation:
+	"one"  "two" ==> "onetwo"
+	"two" L"some" //! NOT recommanded, result is *undefined*

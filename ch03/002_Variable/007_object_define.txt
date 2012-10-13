@@ -1,0 +1,15 @@
+double salary;
+double wage;
+int month;
+int year;
+unsigned long distance;
+
+===================================
+double salary, wage;
+int month,
+day, year; // Cross multiple lines
+usigned long distance;
+
+===================================
+global scope: initialized to zero //! Compiler ensure!
+local scope: undefined value //! Watch out
