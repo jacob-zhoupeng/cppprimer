@@ -1,0 +1,36 @@
+C++ defined that operator && MUST calculate left expression first, 
+*if and only if* left expression result is true, then its right
+expression be calculated. *Otherwise* its right expression will 
+never be calculated.
+
+Example:
+	0 != ptr && 0 != *ptr;
+Won't suffer from null pointer exception even ptr is null, that's 
+awsome!
+
+--------------------------------------------------------------------
+                 Math Algorithm Operator Table
+--------------------------------------------------------------------
+Operator  Function     Example       Can be apply to
+--------------------------------------------------------------------
+*         Multiply    expr * expr   char short int long float double
+/         Divide      expr / expr   char short int long float double
+%         Modulus     expr % expr   char short int long
++         Addition    expr + expr   char short int long float double
+-         Minus       expr - expr   char short int long float double
+--------------------------------------------------------------------
+
+                      Logic Operator Table
+--------------------------------------------------------------------
+Operator       Function         Example         |     Result(bool)
+------------------------------------------------|-------------------
+!              Logic not        !expr           |
+<              less than        expr < expr     |
+<=             less or equal    expr <= expr    |
+>              more than        expr > expr     |    True / False
+>=             more or equal    expr >= expr    |
+==             equal            expr == expr    |
+!=             not equal        expr != expr    |
+&&             logic and        expr && expr    |
+||             logic or         expr || expr    |
+--------------------------------------------------------------------

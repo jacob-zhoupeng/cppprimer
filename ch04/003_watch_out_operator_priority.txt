@@ -1,0 +1,44 @@
+1. Logic And & logic Or:
+expr1 && expr2
+expr1 || expr2
+* 在逻辑与表达式中，expr1 的计算结果为 false;
+* 在逻辑或表达式中，expr2 的计算结果为 true;
+C/C++ 标准保证不会计算 expr2.
+
+Example:
+while (0 != ptr && ptr->value < upperBound 
+		&& ptr->value >= 0 && notFound(ia[ptr->value])) {
+	// Do something ...
+}
+
+while (!found && ptr) {
+	found = lookup(*ptr);
+	++ptr;
+}
+
+2. C/C++ 标准【未定义】二元关系操作符(<, >) 的左右表达式的计算顺序:
+
+Example:
+// 【错误版本】
+if (ia[index++] < ia[index]) {
+	// Swap ...
+}
+
+// 修正后的可移植版本
+if (ia[index] < ia[index + 1]) {
+	// Swap ...
+}
+++index;
+-----------------------------------------------------
+
+// 【错误版本】
+if (ival != jval != kval) {
+	// ...
+}
+说明：
+如果三个表达式之间有影响，不能确定计算顺序.
+
+// 修正后的版本
+if (ival != jval && ival != kval && jval != kval) {
+	// ...
+}
