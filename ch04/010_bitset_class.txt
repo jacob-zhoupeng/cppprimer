@@ -1,0 +1,19 @@
+-------------------------------------------------------------
+                    bitset 操作
+ Author: Zhou Peng <peng.zhoupeng@gmai.com>
+ Date: 2012-10-20 21:29
+-------------------------------------------------------------
+操作                   功能                          用法
+test(pos)         pos 位是否为1?                   a.test(4)
+any()             任意位是否为1?                   a.any()
+none()            是否没有位为1?                   a.none()
+count()           值是1的位的个数                  a.count()
+size()            位元素的个数                     a.size()
+[pos]             访问 pos 位                      a[4]
+flip()            翻转所有的位                     a.flip()
+flip(pos)         翻转 pos 位                      a.flip(4)
+set()             将所有的位置1                    a.set()
+set(pos)          将 pos 位置1                     a.set(4)
+reset()           将所有位置0                      a.reset()
+reset(pos)        将 pos 位置0                     a.reset(4)
+--------------------------------------------------------------

@@ -1,0 +1,108 @@
+隐式类型转换：
+  C++ 定义了一组内置类型对象之间的标准转换在必要时它们被编译器隐式地应用到对
+  象上隐式类型转换发生在下列这些典型的情况下：
+    *在混合类型的算术表达式中在这种情况下最宽的数据类型成为目标转换类型这也
+	被称为算术转换arithmetic conversion 例如:
+      int ival = 3; 
+      double dval = 3.14159; 
+      // ival被提升为double 类型: 3.0 
+      ival + dval;
+    *用一种类型的表达式赋值给另一种类型的对象在这种情况下目标转换类型是被赋值
+	对象的类型例如在下面第一个赋值中文字常量0的类型是int 它被转换成int*型的指
+	针表示空地址在第二个赋值中double型的值被截取成int型的值。
+      // 0被转换成int*类型的空指针值
+      int* pi = 0; 
+      // dval被截取为int值3 
+      ival = dval; 
+    *把一个表达式传递给一个函数调用表达式的类型与形式参数的类型不相同在这种情
+	况下目标转换类型是形式参数的类型例如:
+      extern double sqrt( double ); 
+      // 2被提升为 double 类型: 2.0 
+      cout << "The square root of 2 is " 
+          << sqrt( 2 ) << endl; 
+    *从一个函数返回一个表达式表达式的类型与返回类型不相同在这种情况下目标转换
+	类型是函数的返回类型例如:
+      double difference( int ival1, int ival2 ) { 
+          // 返回值被提升为double类型
+          return ival1 - ival2; 
+      }
+--------------------------------------------------------------------------------
+
+算术转换:
+  算术转换保证了二元操作符如加法或乘法的两个操作数被提升为共同的类型然后再用
+  它表示结果的类型两个通用的指导原则如下:
+  1. 为防止精度损失如果必要的话类型总是被提升为较宽的类型
+  2. 所有含有小于整型的有序类型的算术表达式在计算之前其类型都会被转换成整型
+  规则的定义如下面所述这些规则定义了一个类型转换层次结构 我们从最宽的类型 
+  long double 开始
+  如果一个操作数的类型是 long double, 那么另一个操作数无论是什么类型都将被转
+  换成 long double. 例如在下面的表达式中字符常量小写字母 a 将被提升为 
+  long double, 它的 ASCII 码值为97然后再被加到 long double 型的文字常量上
+    3.14159L + 'a';
+  如果两个操作数都不是 long double 型那么当其中一个操作数的类型是 double 型则
+  另一个就将被转换成 double 型例如:
+    int ival; 
+    float fval; 
+    double dval; 
+    // 在计算加法前fval和ival都被转换成double 
+    dval + fval + ival; 
+  类似地如果两个操作数都不是double型而其中一个操作数是float型则另一个被转换成
+  float 型例如:
+    char cval; 
+    int ival; 
+    float fval; 
+    // 在计算加法前ival和cval都被转换成double 
+    cval + fval + ival; 
+  否则因为两个操作数都不是三种浮点类型之一它们一定是某种整值类型在确定共同的
+  目标提升类型之前编译器将在所有小于int的整值类型上施加一个被称为整值提升
+  integral promotion的过程. 在进行整值提升时类型char signed char unsigned 
+  char和short int都被提升为类型int.如果机器上的m型足够表示所有unsinned shoft型
+  的值这通常发生在short用半个了表i.而int用一个字表示的情况下, 则
+  unsigned short int也被转换成int 否则它会被提升为unsigned int. wchar_t和枚举
+  类型被提升为能够表示其底层类型underlying type所有值的最小整数类型例如已知如
+  下枚举类型
+    enum status { bad, ok }; 
+  相关联的值是0和1, 这两个值可以但不是必须存放在char类型的表示中当这些值实际上
+  被作为char类型来存储时char代表了枚举的底层类型然后status的整值提升将它的底层
+  类型转换为int. 在下列表达式中
+    char cval; 
+    bool found; 
+    enum mumble { m1, m2, m3 } mval; 
+    unsigned long ulong; 
+    cval + ulong; ulong + found; mval + ulong; 
+  在确定两个操作数被提升的公共类型之前cval found和mval都被提升为int类型一旦整
+  值提升执行完毕类型比较就又一次开始如果一个操作数是unsigned long型则第二个也
+  被转换成unsigned long型在上面的例子中所有被加到ulong上的三个对象都被提升为
+  unsigned long型如果两个操作数的类型都不是unsigned long. 而其中一个操作数是
+  long型则另一个也被转换成long型例如
+    char cval; 
+    long lval; 
+    // 在计算加法前cval和1024都被提升为long型
+    cval + 1024 + lval; 
+  long类型的一般转换有一个例外如果一个操作数是long型而另一个是unsigned int型那
+  么只有机器上的long型足够长以便能够存放unsigned int的所有值时一般来说在32位操
+  作系统中long型和int型都用一个字长来表示所以不满足这里的假设条件unsigned int才
+  会被转换为long型否则两个操作数都被提升为unsigned long型若两个操作数都不是long
+  型而其中一个是unsigned int型则另一个也被转换成unsigned int型否则两个操作数一定
+  都是int型尽管算术转换的这些规则可能给你的困惑多于启发但是一般的思想是尽可能地
+  保留多类型表达式中涉及到的值的精度这正是通过把不同的类型提升到当前出现的最宽的
+  类型来实现的.
+--------------------------------------------------------------------------------
+  
+显示转换:
+  显式转换也被称为强制类型转换cast 包括下列命名的强制类型转换操作符static_cast 
+  dynamic_cast const_cast和reinterpret_cast. 虽然有时候确实需要强制类型转换但是它
+  们也是程序错误的源泉通过使用它们程序员关闭了C++语言的类型检查设施.
+    #include <cstring> 
+    
+    int ival = 1024; 
+    void* pv; 
+    int* pi = &ival; 
+    const char* pc = "a casting call"; 
+
+    void mumble() { 
+      pv = pi; // ok: pv 指向ival 
+      pc = pv; // 错误: 没有标准的转换
+      char* pstr = new char[ strlen( pc )+1 ]; 
+	  std::strcpy(pstr, pc); 
+   }

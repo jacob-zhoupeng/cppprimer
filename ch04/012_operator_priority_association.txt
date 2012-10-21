@@ -1,0 +1,92 @@
+================== 优先级 =======================
+int ival = 6 + 3 * 4 / 2 + 2;
+
+计算过程:
+  1. 3 * 4 => 12
+  2. 12 / 2 = > 6
+  3. 6 + 6 = 12
+  4. 12 + 2 => 14
+-------------------------------------------------
+
+while (ch = nextChar() != '\n') {
+	// Do something ...
+
+}
+
+while ('\n' != (ch = nextChar())) {
+	// Do something ...
+}
+
+================= 结合性 =========================
+ival = jval = kval = lval; // "=" 右结合
+
+ival + jval + kval + lval; // "+" 左结合
+
+==========================================================================
+                  操作符优先级表
+ Author: Zhou Peng <peng.zhoupeng@gmail.com>
+ Date: 2012-10-20 22:13
+--------------------------------------------------------------------------
+操作符         功能                      用法
+::             全局域                    ::name
+::             类域                      ::name
+::             名字空间域                namespace::name
+.              成员选择                  object.member
+->             成员选择                  pointer->member
+[]             下标                      variable[expr]
+()             函数调用                  name(expr_list)
+()             类型构造                  type(expr_list)
+++             后置递增                  lvalue++
+--             后置递减                  lvalue--
+typeid         类型 ID                   typeid(type)
+typeid         运行时刻类型 ID           typeid(expr)
+const_cast     类型转换                  const_cast<type>(expr)
+dynamic_cast   类型转换                  dynamic_cast<type>(expr)
+reinterpret_cast 类型转换                reinterpret_cast<type>(expr)
+static_cast    类型转换                  static_cast<type>(expr)
+sizeof         对象的大小                sizeof object
+sizeof         类型的大小                sizeof(type)
+++             前置递增                  ++lvalue
+--             前置递减                  --lvalue
+~              按位非                    ~expr
+!              逻辑非                    !expr
+-              一元减                    -expr
++              一元加                    +expr
+*              解引用                    *expr
+&              取地址                    &expr
+()             类型转换                  (type)expr
+new            分配对象                  new type
+new            分配/初始化对象           new type(expr_list)
+new            分配/替换对象             new(expr_list)type(expr_list)
+new            分配数组                  所有的形式
+delete         释放对象                  所有的形式
+delete         释放数组                  所有的形式
+->*            指向成员选择              pointer->*pointer_to_member
+.*             指向成员选择              object.*pointer_to_member
+*              乘                        expr * expr
+/              除                        expr / expr
+%              取模(求余)                expr % expr
++              加                        expr + expr
+-              减                        expr - expr
+<<             按位左移                  expr << expr
+>>             按位右移                  expr >> expr
+<              小于                      expr < expr
+<=             小于等于                  expr <= expr
+>              大于                      expr > expr
+>=             大于等于                  expr >= expr
+==             等于                      expr == expr
+!=             不等于                    expr != expr
+&              按位于                    expr & expr
+^              按位异或                  expr ^ expr
+|              按位或                    expr | expr
+&&             逻辑与                    expr && expr
+||             逻辑或                    expr || expr
+?:             条件表达式                expr ? expr : expr
+=              赋值                      lvalue = expr
+=, *=, /*, %=
++=, -=, <<=,   复合赋值                  lvalue += expr
+>>=, &=, |=,
+^=
+throw          抛出异常                  throw expr
+,              逗号表达式                expr, expr
+--------------------------------------------------------------------------
